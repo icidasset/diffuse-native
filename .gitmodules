@@ -1,0 +1,3 @@
+[submodule "diffuse"]
+	path = diffuse
+	url = git@github.com:icidasset/diffuse.git

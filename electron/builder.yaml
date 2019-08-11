@@ -1,0 +1,15 @@
+appId: "diffuse"
+
+
+mac:
+  category: "public.app-category.music"
+
+
+linux:
+  category: "Audio"
+
+
+directories:
+  app: "build"
+  buildResources: "build/resources"
+  output: "dist"
