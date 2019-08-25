@@ -1,13 +1,13 @@
 {
   "name": "Diffuse",
   "description": "A music player that connects to your cloud/distributed storage",
-  "version": "2.0.0-alpha.4",
+  "version": "2.0.0-beta.1",
   "author": "Steven Vandevelde <icid.asset@gmail.com>",
   "repository": "github:icidasset/diffuse",
   "license": "MIT",
   "main": "electron.js",
   "devDependencies": {
-    "electron": "^6.0.1",
+    "electron": "^6.0.4",
     "electron-builder": "^21.2.0"
   },
   "dependencies": {
