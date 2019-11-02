@@ -1,15 +1,19 @@
 appId: "diffuse"
 
 
+directories:
+  app: "build"
+  buildResources: "build/resources"
+  output: "dist"
+
+
+
+# Platforms & Distributions
+
+
 mac:
   category: "public.app-category.music"
 
 
 linux:
   category: "Audio"
-
-
-directories:
-  app: "build"
-  buildResources: "build/resources"
-  output: "dist"
