@@ -35,7 +35,7 @@ dist: clean build-diffuse prep
 
 
 install:
-	@echo "> Install Diffuse dependencies"
+	@echo "> Installing Diffuse dependencies"
 	@(cd ../diffuse; yarn install)
 
 
