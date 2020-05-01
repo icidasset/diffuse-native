@@ -20,7 +20,7 @@ all: dist
 
 build-diffuse:
 	@echo "> Building Diffuse from source"
-	@(cd ../diffuse; make build-prod)
+	@(cd ../diffuse; just build-prod)
 	@(cd ../diffuse; mv ./build ../electron/$(BUILD_DIR))
 
 
