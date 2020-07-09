@@ -102,7 +102,9 @@ function createWindow() {
   })
 
   // Load application
-  win.loadURL("http://127.0.0.1:44999")
+  win.loadURL("http://127.0.0.1:44999", {
+    userAgent: "Chrome"
+  })
 
   // Development stuff
   if (isDev) {
