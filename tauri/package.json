@@ -1,0 +1,17 @@
+{
+  "name": "Diffuse",
+  "description": "A music player that connects to your cloud/distributed storage",
+  "version": "3.0.0-pre.1",
+  "author": "Steven Vandevelde <icid.asset@gmail.com>",
+  "homepage": "https://diffuse.sh",
+  "repository": "github:icidasset/diffuse",
+  "license": "SEE LICENSE IN LICENSE",
+  "main": "index.js",
+  "devDependencies": {},
+  "dependencies": {
+    "tauri": "^0.11.0"
+  },
+  "scripts": {
+    "tauri": "tauri"
+  }
+}
