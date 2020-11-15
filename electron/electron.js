@@ -18,46 +18,7 @@ app.on("ready", _ => {
 
   // Menu
   Menu.setApplicationMenu(menu)
-
-  // Accessibility
-  setupAccessibilityStuff()
-
-  // Keyboard shortcuts
-  bindKeyboardShortcuts()
 })
-
-
-
-// ACCESSIBILITY
-// ---
-// Thanks to https://github.com/LenKagamine/lyra/blob/2f16a913efed6e4aacd569088ff1a58358d39eb3/src/main/accessibility.js
-
-
-function setupAccessibilityStuff() {
-  // The app needs to be a trusted accessibility client
-  // so we can use the media keys.
-  if (process.platform !== "darwin") return
-
-  // Already trusted?
-  const isTrusted = systemPreferences.isTrustedAccessibilityClient(false)
-  if (isTrusted) return
-
-  // Show dialog
-  dialog.showMessageBox({
-    type: "warning",
-    message: "Turn on accessibility",
-    detail: "To control playback using media keys on your keyboard, select the Diffuse checkbox in Security & Privacy > Accessibility.\n\nYou will have to restart Diffuse after enabling access.",
-    defaultId: 1,
-    cancelId: 0,
-    buttons: ["Not Now", "Turn On Accessibility"]
-
-  }).then(result => {
-    if (result.response === 1) {
-      systemPreferences.isTrustedAccessibilityClient(true)
-    }
-
-  })
-}
 
 
 
@@ -176,47 +137,3 @@ if (process.platform === "darwin") {
 
 
 const menu = Menu.buildFromTemplate(menuTemplate)
-
-
-
-// SHORTCUTS
-
-
-function bindKeyboardShortcuts() {
-  globalShortcut.register("MediaNextTrack", _ => {
-    if (!win) return
-
-    win.webContents.executeJavaScript(`
-      document.dispatchEvent(new Event("MediaNext"))
-    `)
-  })
-
-  globalShortcut.register("MediaPlayPause", _ => {
-    if (!win) return
-
-    win.webContents.executeJavaScript(`
-      document.dispatchEvent(new Event("MediaPlayPause"))
-    `)
-  })
-
-  globalShortcut.register("MediaPreviousTrack", _ => {
-    if (!win) return
-
-    win.webContents.executeJavaScript(`
-      document.dispatchEvent(new Event("MediaPrev"))
-    `)
-  })
-
-  globalShortcut.register("MediaStop", _ => {
-    if (!win) return
-
-    win.webContents.executeJavaScript(`
-      document.dispatchEvent(new Event("MediaStop"))
-    `)
-  })
-}
-
-
-app.on("will-quit", () => {
-  globalShortcut.unregisterAll()
-})

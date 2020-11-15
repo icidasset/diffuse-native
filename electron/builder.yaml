@@ -13,6 +13,7 @@ directories:
 
 mac:
   category: "public.app-category.music"
+  darkModeSupport: true
 
 
 linux:

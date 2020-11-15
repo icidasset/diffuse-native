@@ -20,7 +20,7 @@ all: dist
 
 build-diffuse:
 	@echo "> Building Diffuse from source"
-	@(cd ../diffuse; just build-prod)
+	@(cd ../diffuse; nix-shell --run "just build-prod")
 	@(cd ../diffuse; mv ./build ../electron/$(BUILD_DIR))
 
 
@@ -32,6 +32,10 @@ clean:
 dist: clean build-diffuse prep
 	@echo "> Making electron build"
 	@$(NODE_BIN)/electron-builder build --config=builder.yaml --mac --linux --win
+	@mv build diffuse
+	@zip -r -X $(DIST_DIR)/diffuse-web.zip diffuse
+	@tar -zcvf $(DIST_DIR)/diffuse-web.tar.gz diffuse
+	@rm -rf diffuse
 
 
 install:
