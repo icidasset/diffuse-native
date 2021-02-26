@@ -1,17 +1,19 @@
 {
   "name": "Diffuse",
   "description": "A music player that connects to your cloud/distributed storage",
-  "version": "3.0.0-beta-1",
+  "version": "3.0.0-beta-2",
   "author": "Steven Vandevelde <icid.asset@gmail.com>",
   "homepage": "https://diffuse.sh",
   "repository": "github:icidasset/diffuse",
   "license": "SEE LICENSE IN LICENSE",
   "main": "electron.js",
   "devDependencies": {
-    "electron": "^10.1.5",
-    "electron-builder": "^22.9.1"
+    "electron": "^11.3.0",
+    "electron-builder": "^22.10.5"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "make-icns": "^1.1.4",
+    "sharp": "^0.27.2"
   }
 }

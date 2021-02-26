@@ -14,6 +14,12 @@ directories:
 mac:
   category: "public.app-category.music"
   darkModeSupport: true
+  
+  target:
+    - target: dmg
+      arch: [ x64, arm64 ]
+    - target: zip
+      arch: [ x64, arm64 ]
 
 
 linux:

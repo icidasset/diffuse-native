@@ -1,4 +1,4 @@
-.PHONY: build
+.PHONY: build dist
 
 
 # Variables
@@ -31,8 +31,10 @@ clean:
 
 dist: clean build-diffuse prep
 	@echo "> Making electron build"
-	@$(NODE_BIN)/electron-builder build --config=builder.yaml --mac --linux --win
-	@mv build diffuse
+	@$(NODE_BIN)/electron-builder $(BUILD_DIR) --config=builder.yaml --mac --linux --win
+	rm $(BUILD_DIR)/.DS_Store || true
+	rm -rf $(BUILD_DIR)/node_modules || true
+	@mv $(BUILD_DIR) diffuse
 	@zip -r -X $(DIST_DIR)/diffuse-web.zip diffuse
 	@tar -zcvf $(DIST_DIR)/diffuse-web.tar.gz diffuse
 	@rm -rf diffuse
@@ -40,7 +42,7 @@ dist: clean build-diffuse prep
 
 install:
 	@echo "> Installing Diffuse dependencies"
-	@(cd ../diffuse; yarn install)
+	@(cd ../diffuse; just install-deps)
 
 
 prep:
@@ -49,7 +51,7 @@ prep:
 	@cp package.json $(BUILD_DIR)/
 	@mkdir -p $(BUILD_DIR)/resources
 	@cp $(SRC_DIR)/Static/Images/icon.png $(BUILD_DIR)/resources/icon.png
-	@makeicns -in $(BUILD_DIR)/resources/icon.png -out $(BUILD_DIR)/resources/icon.icns 2>/dev/null
+	@./node_modules/.bin/mk-icns $(BUILD_DIR)/resources/icon.png $(BUILD_DIR)/resources/ -n icon
 	@convert $(BUILD_DIR)/resources/icon.png -define icon:auto-resize=256 $(BUILD_DIR)/resources/icon.ico
 	@cp ../diffuse/LICENSE $(BUILD_DIR)/LICENSE
 

@@ -1,10 +1,9 @@
 ```shell
 # Install dependencies
 brew install imagemagick
-brew install makeicns
-brew install yarn
+brew install pnpm
 
-yarn install
+pnpm install
 make install
 
 # Make a build
