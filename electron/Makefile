@@ -11,7 +11,7 @@ BUILD_DIR=build
 
 # Default task
 
-all: dist
+all: install dist
 
 
 #
@@ -31,7 +31,7 @@ clean:
 
 dist: clean build-diffuse prep
 	@echo "> Making electron build"
-	@$(NODE_BIN)/electron-builder $(BUILD_DIR) --config=builder.yaml --mac --linux --win
+	pnpx electron-builder $(BUILD_DIR) --config=builder.yaml --mac --linux --win
 	rm $(BUILD_DIR)/.DS_Store || true
 	rm -rf $(BUILD_DIR)/node_modules || true
 	@mv $(BUILD_DIR) diffuse
