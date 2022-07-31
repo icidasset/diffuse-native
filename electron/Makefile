@@ -51,8 +51,7 @@ prep:
 	@cp package.json $(BUILD_DIR)/
 	@mkdir -p $(BUILD_DIR)/resources
 	@cp $(SRC_DIR)/Static/Images/icon.png $(BUILD_DIR)/resources/icon.png
-	@./node_modules/.bin/mk-icns $(BUILD_DIR)/resources/icon.png $(BUILD_DIR)/resources/ -n icon
-	@convert $(BUILD_DIR)/resources/icon.png -define icon:auto-resize=256 $(BUILD_DIR)/resources/icon.ico
+	@./node_modules/.bin/png2icons $(BUILD_DIR)/resources/icon.png $(BUILD_DIR)/resources/icon -allwe -hm
 	@cp ../diffuse/LICENSE $(BUILD_DIR)/LICENSE
 
 
